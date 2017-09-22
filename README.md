@@ -1,5 +1,7 @@
 # 58皮革网前端项目
 
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 > 基于vue2
 
 ## 运行项目

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="app-header">
+    <header class="home-header">
       <div class="logo"></div>
       <nav>
         <a href="" class="nav-item">发布</a><a href="" class="nav-item">我的</a>
@@ -83,9 +83,8 @@
   
 </script>
 
-<style lang="scss">
-
-$wrap: 4%;
+<style lang="scss" scoped>
+@import '../../../style/helper';
 
 .left {
   float: left;
@@ -98,7 +97,7 @@ $wrap: 4%;
   overflow: auto;
 }
 
-.app-header {
+.home-header {
   position: fixed;
   top: 0;
   padding: 0 $wrap;

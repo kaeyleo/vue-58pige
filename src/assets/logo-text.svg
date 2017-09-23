@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="40px" viewBox="0 0 30 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(0.000000, 3.000000)">
+            <g id="logo" stroke="#FF7A00" stroke-width="5" opacity="0.7">
+                <path d="M10.5,22.7915403 C14.6421356,22.7915403 18,19.4336759 18,15.2915403 C18,11.1494047 14.6421356,7.79154032 10.5,7.79154032 C6.35786438,7.79154032 3,11.1494047 3,15.2915403" id="Oval" stroke-linecap="round" transform="translate(10.500000, 15.291540) rotate(20.000000) translate(-10.500000, -15.291540) "></path>
+                <circle id="Oval" cx="20.2084597" cy="6" r="6"></circle>
+            </g>
+            <g id="Group" transform="translate(0.000000, 25.000000)" fill="#898E9A">
+                <text id="58" font-family="PingFangSC-Medium, PingFang SC" font-size="10" font-weight="400">
+                    <tspan x="0" y="11">58</tspan>
+                </text>
+                <text id="皮革" font-family="PingFangSC-Semibold, PingFang SC" font-size="9" font-weight="500" letter-spacing="-0.400000006">
+                    <tspan x="12.5013832" y="10.2621523">皮革</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

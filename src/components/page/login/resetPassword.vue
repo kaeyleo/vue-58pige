@@ -7,7 +7,7 @@
       <div class="page-title">重置密码</div>
     </header>
 
-    <div class="step-slide" v-bind:class="{'next': isNext}">
+    <div class="step-slide" :class="{'next': isNext}">
       <div class="login-form step-one">
         <div class="input-item">
           <input type="tel" maxlength="11" placeholder="手机号" autocomplete="off" v-model="phone">
@@ -18,15 +18,15 @@
           <i class="iconfont icon-guanbi icon icon-clear-phone" @click="clear('code')" v-show="code"></i>
           <div class="sendMsg-button" @click="isSend && sendMsg()">{{ msgText }}</div>
         </div>
-        <div class="login-button" @click="toStep2">下一步</div>
+        <div class="login-button" :class="{'button-avl': (phoneIsMatch && codeIsMatch) && !nextClick}" @click="!nextClick && toStep2()">{{ nextText }}</div>
       </div>
       <div class="login-form step-two">
         <div class="input-item">
           <input type="password" maxlength="12" placeholder="设置6~12位密码" autocomplete="off" v-model="password">
           <i class="iconfont icon-guanbi icon" @click="clear('password')" v-show="password"></i>
         </div>
-        <div class="login-button button-avl">确认</div>
-        <span class="other-act back-step" @click="isNext = false">返回上一步</span>
+        <div class="login-button" :class="{'button-avl': pwdIsMath && !isSubmit}" @click="!isSubmit && register()">{{ submitText }}</div>
+        <span class="other-act back-step" @click="backStep" v-show="!isSubmit">返回上一步</span>
       </div>
     </div>  
 
@@ -42,29 +42,106 @@ export default {
       password: null,
       isSend: true,
       msgText: '获取验证码',
-      isNext: false
+      phoneIsMatch: false,
+      codeIsMatch: false,
+      pwdIsMath: false,
+      nextClick: false,
+      nextText: '下一步',
+      isNext: false,
+      isSubmit: false,
+      submitText: '确认'
+    }
+  },
+  watch: {
+    /*
+     * 验证手机号和验证码
+     */
+    phone: function () {
+      this.check('phone', 'phoneIsMatch')
+    },
+    code: function () {
+      this.check('code', 'codeIsMatch')
+    },
+    password: function () {
+      this.check('password', 'pwdIsMath')
     }
   },
   methods: {
+    /**
+     * @method 清空输入框
+     * @param {String} target 需要清空的输入框绑定的参数名
+     */
     clear (target) {
       this[target] = null
     },
+    /**
+     * @method 发送验证码短信
+     */
     sendMsg () {
-      const self = this
+      // 验证手机号码
+      if (!this.phoneIsMatch) {
+        console.log('请输入正确的手机号码')
+        return
+      }
+      // 调后台 发送验证码api
+      // 验证码按钮倒计时
       let seconds = 60
       this.isSend = false
       const timer = setInterval(function () {
         --seconds
-        self.msgText = `重新发送(${seconds})`
+        this.msgText = `重新发送(${seconds})`
         if (seconds === 55 - 1) {
           clearInterval(timer)
-          self.msgText = '获取验证码'
-          self.isSend = true
+          this.msgText = '获取验证码'
+          this.isSend = true
         }
-      }, 1000)
+      }.bind(this), 1000)
     },
+    /**
+     * @method 表单验证
+     * @param {String} name 验证对象的参数名
+     * @param {String} matchName 验证对象匹配状态的参数名
+     */
+    check (name, matchName) {
+      this[name].length > 3
+        ? this[matchName] = true
+        : this[matchName] = false
+    },
+    /**
+     * @method 进行后台验证，如果正确则切换到下一步
+     */
     toStep2 () {
-      this.isNext = true
+      // 前端验证失败 弹出提示
+      if (!(this.phoneIsMatch && this.codeIsMatch)) {
+        console.log('请输入正确格式')
+        return
+      }
+      // 后台验证通过则切换到下一步
+      this.nextText = '正在验证...'
+      this.nextClick = true
+      setTimeout(function () {
+        this.isNext = true
+      }.bind(this), 2000)
+    },
+    /**
+     * @method 返回上一步
+     */
+    backStep () {
+      this.nextText = '下一步'
+      this.nextClick = false
+      this.isNext = false
+    },
+    /**
+     * @method 注册
+     */
+    register () {
+      if (!this.pwdIsMath) {
+        console.log('请输入正确密码')
+        return
+      }
+      this.isSubmit = true
+      this.submitText = '正在注册...'
+      console.log('开始注册')
     }
   }
 }

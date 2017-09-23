@@ -1,0 +1,107 @@
+/*
+ * login form style
+ */
+
+ .login-form {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.input-item {
+  position: relative;
+  padding: 3.6vw 0;
+  border-bottom: 1px solid #DFE3EC;
+  input, div {
+    display: inline-block;
+  }
+  input {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    background-color: transparent;
+    font-size: 3.8vw;
+    &:-webkit-autofill {  
+      -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;  
+    }
+  }
+  .icon {
+    position: absolute;
+    top: 4.2vw;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    color: #C4C7CE;
+  }
+}
+
+.login-button {
+  margin-top: 7vw;
+  display: block;
+  width: 100%;
+  line-height: 11.6vw;
+  text-align: center;
+  font-size: 4vw;
+  font-weight: 600;
+  color: rgba( 255, 255, 255, 0.6);
+  background-color: #FF6A41;
+  border-radius: 3px;
+}
+
+.button-avl {
+  color: #fff;
+}
+
+.other-act {
+  display: inline-block;
+  margin-top: 3vw;
+  font-size: 3.5vw;
+  color: #989FB0;
+}
+
+.sendMsg-button {
+  float: right;
+  width: 30%;
+  font-size: 3.6vw;
+  color: #9FA4AE;
+  text-align: center;
+}
+
+.step-one {
+  .code-input {
+    width: 60%;
+  }
+  .icon-clear-phone {
+    right: 32%;
+  }
+}
+
+.step-slide {
+  position: relative;
+  width: 90%;
+  margin: 4vw auto 0 auto;
+}
+
+.step-one, .step-two {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s ease-out;
+}
+
+.step-one {
+  transform: translateX(0%);
+}
+
+.step-two {
+  transform: translateX(110%);
+}
+
+.next {
+  .step-one {
+    transform: translateX(-110%);
+  }
+  .step-two {
+    transform: translateX(0%);
+  }
+}

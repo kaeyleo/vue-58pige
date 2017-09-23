@@ -10,7 +10,7 @@
       </div>
     </header>
 
-    <div class="step-slide">
+    <div class="step-slide next">
       <div class="login-form step-one">
         <div class="input-item">
           <input type="tel" maxlength="11" placeholder="手机号" autocomplete="off">
@@ -29,6 +29,7 @@
           <i class="iconfont icon-guanbi icon"></i>
         </div>
         <a class="login-button button-avl" href="">注册</a>
+        <span class="other-act back-step">返回上一步</span>
       </div>
     </div>  
 
@@ -40,56 +41,16 @@
 </script>
 
 <style lang="scss" scoped>
+@import '../../../style/login';
+
 .login-form {
   margin: 0;
   width: 100%;
   float: left;
 }
 
-.sendMsg-button {
-  float: right;
-  width: 30%;
-  font-size: 3.6vw;
-  color: #9FA4AE;
+.back-step {
+  width: 100%;
   text-align: center;
-}
-
-.step-one {
-  .code-input {
-    width: 60%;
-  }
-  .icon-clear-phone {
-    right: 32%;
-  }
-}
-
-.step-slide {
-  position: relative;
-  width: 90%;
-  margin: 4vw auto 0 auto;
-}
-
-.step-one, .step-two {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 0.5s ease-out;
-}
-
-.step-one {
-  transform: translateX(0%);
-}
-
-.step-two {
-  transform: translateX(110%);
-}
-
-.next {
-  .step-one {
-    transform: translateX(-110%);
-  }
-  .step-two {
-    transform: translateX(0%);
-  }
 }
 </style>

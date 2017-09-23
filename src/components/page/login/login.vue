@@ -21,7 +21,7 @@
         <i class="iconfont icon-ai-eye icon"></i>
       </div>
       <a class="login-button" href="">登录</a>
-      <a class="forget-pwd" href="">忘记密码</a>
+      <a class="other-act forget-pwd" href="">忘记密码</a>
     </div>
   </div>
 </template>
@@ -31,6 +31,8 @@
 </script>
 
 <style lang="scss" scoped>
+@import '../../../style/login';
+
 .logo {
   margin: 6vw 0;
   img {
@@ -41,9 +43,6 @@
 }
 
 .forget-pwd {
-  margin-top: 3vw;
   float: right;
-  font-size: 3.5vw;
-  color: #989FB0;
 }
 </style>

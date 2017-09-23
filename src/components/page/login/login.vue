@@ -21,7 +21,7 @@
         <i class="iconfont icon-ai-eye icon"></i>
       </div>
       <a class="login-button" href="">登录</a>
-      <a class="other-act forget-pwd" href="">忘记密码</a>
+      <router-link class="other-act forget-pwd" to="/forget">忘记密码</router-link>
     </div>
   </div>
 </template>
@@ -40,9 +40,5 @@
     margin: 0 auto;
     width: 14%;
   }
-}
-
-.forget-pwd {
-  float: right;
 }
 </style>

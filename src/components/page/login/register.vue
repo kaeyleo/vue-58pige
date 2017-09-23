@@ -10,14 +10,14 @@
       </div>
     </header>
 
-    <div class="step-slide next">
+    <div class="step-slide">
       <div class="login-form step-one">
         <div class="input-item">
           <input type="tel" maxlength="11" placeholder="手机号" autocomplete="off">
           <i class="iconfont icon-guanbi icon"></i>
         </div>
         <div class="input-item">
-          <input type="tel" class="code-input" maxlength="8" placeholder="验证码" autocomplete="off">
+          <input type="tel" class="code-input" maxlength="6" placeholder="验证码" autocomplete="off">
           <i class="iconfont icon-guanbi icon icon-clear-phone"></i>
           <div class="sendMsg-button">获取验证码</div>
         </div>

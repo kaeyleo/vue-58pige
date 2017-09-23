@@ -72,6 +72,7 @@
           </div>
           <!-- <div class="mark">企业认证</div> -->
         </li>
+        <li class="load-more">加载更多</li>
       </ul>
     </section>
     
@@ -124,7 +125,7 @@ nav {
 
 .nav-item {
   padding: 6px;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   font-weight: 500;
   line-height: 58px;
@@ -248,6 +249,16 @@ section {
       font-weight: 500;
       color: #FF683E;
     }
+  }
+}
+.load-more {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  line-height: 50px;
+  background-color: #F2F5F8;
+  &:active {
+    background-color: #E7EBEF;
   }
 }
 </style>

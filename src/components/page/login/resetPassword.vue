@@ -80,7 +80,7 @@ export default {
     sendMsg () {
       // 验证手机号码
       if (!this.phoneIsMatch) {
-        console.log('请输入正确的手机号码')
+        this.$toast('请输入正确的手机号码')
         return
       }
       // 调后台 发送验证码api
@@ -113,7 +113,7 @@ export default {
     toStep2 () {
       // 前端验证失败 弹出提示
       if (!(this.phoneIsMatch && this.codeIsMatch)) {
-        console.log('请输入正确格式')
+        this.$toast('验证码不正确')
         return
       }
       // 后台验证通过则切换到下一步
@@ -121,7 +121,7 @@ export default {
       this.nextClick = true
       setTimeout(function () {
         this.isNext = true
-      }.bind(this), 2000)
+      }.bind(this), 500)
     },
     /**
      * @method 返回上一步
@@ -136,12 +136,11 @@ export default {
      */
     register () {
       if (!this.pwdIsMath) {
-        console.log('请输入正确密码')
+        this.$toast('请输入正确密码')
         return
       }
       this.isSubmit = true
       this.submitText = '正在注册...'
-      console.log('开始注册')
     }
   }
 }

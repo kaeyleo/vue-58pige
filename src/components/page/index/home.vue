@@ -1,232 +1,246 @@
 <template>
-  <div class="page bg-gray">
-    <div class="scroll-view">
-      <header class="home-header">
-        <div class="logo"></div>
-        <nav>
-          <a href="" class="nav-item">发布</a><router-link to="/profile" class="nav-item">我的</router-link>
-        </nav>
-      </header>
-      <div class="banner">
-        <div class="slide">
-          <img src="../../../assets/banner.png" alt="">
-        </div>
+  <div class="bg-gray">
+    <header class="home-header" :class="{'header-fixed': isFixed}">
+      <div class="logo"></div>
+      <nav>
+        <a href="" class="nav-item">发布</a><router-link to="/profile" class="nav-item">我的</router-link>
+      </nav>
+    </header>
+    <div class="banner">
+      <div class="slide">
+        <img src="../../../assets/banner.png" alt="">
       </div>
-      <section>
-        <header><h2>推荐商品</h2></header>
-        <ul class="info-feeds">
-          <router-link to="/detail" class="info-item" tag="li">
-            <div class="icontent">
-              <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-              <div class="parameter">
-                <div class="param-list left">
-                  <div class="param-item">
-                    <span class="value">黄牛皮</span>
-                    <span class="param">品种</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">A级</span>
-                    <span class="param">皮胚</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">0.7mm</span>
-                    <span class="param">厚度</span>
-                  </div>
-                </div>
-                <div class="price right">
-                  <span>¥14.00</span>
-                </div>
-              </div>
-              <footer class="clear">
-                <span class="left">成都盛泓超纤皮革经营部</span>
-                <span class="right">成都武侯</span>
-              </footer>
-            </div>
-            <div class="mark">企业认证</div>
-          </router-link>
-          <router-link to="/detail" class="info-item" tag="li">
-            <div class="icontent">
-              <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-              <div class="parameter">
-                <div class="param-list left">
-                  <div class="param-item">
-                    <span class="value">黄牛皮</span>
-                    <span class="param">品种</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">A级</span>
-                    <span class="param">皮胚</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">0.7mm</span>
-                    <span class="param">厚度</span>
-                  </div>
-                </div>
-                <div class="price right">
-                  <span>¥14.00</span>
-                </div>
-              </div>
-              <footer class="clear">
-                <span class="left">成都盛泓超纤皮革经营部</span>
-                <span class="right">成都武侯</span>
-              </footer>
-            </div>
-            <div class="mark">企业认证</div>
-          </router-link>
-          <router-link to="/detail" class="info-item" tag="li">
-            <div class="icontent">
-              <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-              <div class="parameter">
-                <div class="param-list left">
-                  <div class="param-item">
-                    <span class="value">黄牛皮</span>
-                    <span class="param">品种</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">A级</span>
-                    <span class="param">皮胚</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">0.7mm</span>
-                    <span class="param">厚度</span>
-                  </div>
-                </div>
-                <div class="price right">
-                  <span>¥14.00</span>
-                </div>
-              </div>
-              <footer class="clear">
-                <span class="left">成都盛泓超纤皮革经营部</span>
-                <span class="right">成都武侯</span>
-              </footer>
-            </div>
-            <div class="mark">企业认证</div>
-          </router-link>
-          <router-link to="/detail" class="info-item" tag="li">
-            <div class="icontent">
-              <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-              <div class="parameter">
-                <div class="param-list left">
-                  <div class="param-item">
-                    <span class="value">黄牛皮</span>
-                    <span class="param">品种</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">A级</span>
-                    <span class="param">皮胚</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">0.7mm</span>
-                    <span class="param">厚度</span>
-                  </div>
-                </div>
-                <div class="price right">
-                  <span>¥14.00</span>
-                </div>
-              </div>
-              <footer class="clear">
-                <span class="left">成都盛泓超纤皮革经营部</span>
-                <span class="right">成都武侯</span>
-              </footer>
-            </div>
-            <div class="mark">企业认证</div>
-          </router-link>
-          <router-link to="/detail" class="info-item" tag="li">
-            <div class="icontent">
-              <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-              <div class="parameter">
-                <div class="param-list left">
-                  <div class="param-item">
-                    <span class="value">黄牛皮</span>
-                    <span class="param">品种</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">A级</span>
-                    <span class="param">皮胚</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">0.7mm</span>
-                    <span class="param">厚度</span>
-                  </div>
-                </div>
-                <div class="price right">
-                  <span>¥14.00</span>
-                </div>
-              </div>
-              <footer class="clear">
-                <span class="left">成都盛泓超纤皮革经营部</span>
-                <span class="right">成都武侯</span>
-              </footer>
-            </div>
-            <div class="mark">企业认证</div>
-          </router-link>
-          <router-link to="/detail" class="info-item" tag="li">
-            <div class="icontent">
-              <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-              <div class="parameter">
-                <div class="param-list left">
-                  <div class="param-item">
-                    <span class="value">黄牛皮</span>
-                    <span class="param">品种</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">A级</span>
-                    <span class="param">皮胚</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">0.7mm</span>
-                    <span class="param">厚度</span>
-                  </div>
-                </div>
-                <div class="price right">
-                  <span>¥14.00</span>
-                </div>
-              </div>
-              <footer class="clear">
-                <span class="left">成都盛泓超纤皮革经营部</span>
-                <span class="right">成都武侯</span>
-              </footer>
-            </div>
-            <div class="mark">企业认证</div>
-          </router-link>
-          <li class="info-item">
-            <div class="icontent">
-              <div class="title">新款彩色平纹纳帕牛皮革</div>
-              <div class="parameter">
-                <div class="param-list left">
-                  <div class="param-item">
-                    <span class="value">黄牛皮</span>
-                    <span class="param">品种</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">A级</span>
-                    <span class="param">皮胚</span>
-                  </div>
-                  <div class="param-item">
-                    <span class="value">1.2mm</span>
-                    <span class="param">厚度</span>
-                  </div>
-                </div>
-                <div class="price right">
-                  <span>¥19.50</span>
-                </div>
-              </div>
-              <footer class="clear">
-                <span class="left">鼎茂皮革</span>
-                <span class="right">广东 广州</span>
-              </footer>
-            </div>
-            <!-- <div class="mark">企业认证</div> -->
-          </li>
-          <li class="load-more">加载更多</li>
-        </ul>
-      </section>
     </div>
+    <section>
+      <header><h2>推荐商品</h2></header>
+      <ul class="info-feeds">
+        <router-link to="/detail" class="info-item" tag="li">
+          <div class="icontent">
+            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
+            <div class="parameter">
+              <div class="param-list left">
+                <div class="param-item">
+                  <span class="value">黄牛皮</span>
+                  <span class="param">品种</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">A级</span>
+                  <span class="param">皮胚</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">0.7mm</span>
+                  <span class="param">厚度</span>
+                </div>
+              </div>
+              <div class="price right">
+                <span>¥14.00</span>
+              </div>
+            </div>
+            <footer class="clear">
+              <span class="left">成都盛泓超纤皮革经营部</span>
+              <span class="right">成都武侯</span>
+            </footer>
+          </div>
+          <div class="mark">企业认证</div>
+        </router-link>
+        <router-link to="/detail" class="info-item" tag="li">
+          <div class="icontent">
+            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
+            <div class="parameter">
+              <div class="param-list left">
+                <div class="param-item">
+                  <span class="value">黄牛皮</span>
+                  <span class="param">品种</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">A级</span>
+                  <span class="param">皮胚</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">0.7mm</span>
+                  <span class="param">厚度</span>
+                </div>
+              </div>
+              <div class="price right">
+                <span>¥14.00</span>
+              </div>
+            </div>
+            <footer class="clear">
+              <span class="left">成都盛泓超纤皮革经营部</span>
+              <span class="right">成都武侯</span>
+            </footer>
+          </div>
+          <div class="mark">企业认证</div>
+        </router-link>
+        <router-link to="/detail" class="info-item" tag="li">
+          <div class="icontent">
+            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
+            <div class="parameter">
+              <div class="param-list left">
+                <div class="param-item">
+                  <span class="value">黄牛皮</span>
+                  <span class="param">品种</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">A级</span>
+                  <span class="param">皮胚</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">0.7mm</span>
+                  <span class="param">厚度</span>
+                </div>
+              </div>
+              <div class="price right">
+                <span>¥14.00</span>
+              </div>
+            </div>
+            <footer class="clear">
+              <span class="left">成都盛泓超纤皮革经营部</span>
+              <span class="right">成都武侯</span>
+            </footer>
+          </div>
+          <div class="mark">企业认证</div>
+        </router-link>
+        <router-link to="/detail" class="info-item" tag="li">
+          <div class="icontent">
+            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
+            <div class="parameter">
+              <div class="param-list left">
+                <div class="param-item">
+                  <span class="value">黄牛皮</span>
+                  <span class="param">品种</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">A级</span>
+                  <span class="param">皮胚</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">0.7mm</span>
+                  <span class="param">厚度</span>
+                </div>
+              </div>
+              <div class="price right">
+                <span>¥14.00</span>
+              </div>
+            </div>
+            <footer class="clear">
+              <span class="left">成都盛泓超纤皮革经营部</span>
+              <span class="right">成都武侯</span>
+            </footer>
+          </div>
+          <div class="mark">企业认证</div>
+        </router-link>
+        <router-link to="/detail" class="info-item" tag="li">
+          <div class="icontent">
+            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
+            <div class="parameter">
+              <div class="param-list left">
+                <div class="param-item">
+                  <span class="value">黄牛皮</span>
+                  <span class="param">品种</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">A级</span>
+                  <span class="param">皮胚</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">0.7mm</span>
+                  <span class="param">厚度</span>
+                </div>
+              </div>
+              <div class="price right">
+                <span>¥14.00</span>
+              </div>
+            </div>
+            <footer class="clear">
+              <span class="left">成都盛泓超纤皮革经营部</span>
+              <span class="right">成都武侯</span>
+            </footer>
+          </div>
+          <div class="mark">企业认证</div>
+        </router-link>
+        <router-link to="/detail" class="info-item" tag="li">
+          <div class="icontent">
+            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
+            <div class="parameter">
+              <div class="param-list left">
+                <div class="param-item">
+                  <span class="value">黄牛皮</span>
+                  <span class="param">品种</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">A级</span>
+                  <span class="param">皮胚</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">0.7mm</span>
+                  <span class="param">厚度</span>
+                </div>
+              </div>
+              <div class="price right">
+                <span>¥14.00</span>
+              </div>
+            </div>
+            <footer class="clear">
+              <span class="left">成都盛泓超纤皮革经营部</span>
+              <span class="right">成都武侯</span>
+            </footer>
+          </div>
+          <div class="mark">企业认证</div>
+        </router-link>
+        <li class="info-item">
+          <div class="icontent">
+            <div class="title">新款彩色平纹纳帕牛皮革</div>
+            <div class="parameter">
+              <div class="param-list left">
+                <div class="param-item">
+                  <span class="value">黄牛皮</span>
+                  <span class="param">品种</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">A级</span>
+                  <span class="param">皮胚</span>
+                </div>
+                <div class="param-item">
+                  <span class="value">1.2mm</span>
+                  <span class="param">厚度</span>
+                </div>
+              </div>
+              <div class="price right">
+                <span>¥19.50</span>
+              </div>
+            </div>
+            <footer class="clear">
+              <span class="left">鼎茂皮革</span>
+              <span class="right">广东 广州</span>
+            </footer>
+          </div>
+          <!-- <div class="mark">企业认证</div> -->
+        </li>
+        <li class="load-more">加载更多</li>
+      </ul>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      isFixed: false
+    }
+  },
+  mounted () {
+    this.$nextTick(function () {
+      window.addEventListener('scroll', this.fixedheader)
+    })
+  },
+  methods: {
+    fixedheader () {
+      let scroll = document.body.scrollTop
+      scroll >= 140 ? this.isFixed = true : this.isFixed = false
+    }
+  }
 }
 </script>
 
@@ -234,20 +248,27 @@ export default {
 @import '../../../style/infolist';
 
 .home-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   padding: 0 $wrap;
   width: 100%;
-  height: 55px;
+  height: 13vw;
   box-sizing: border-box;
   z-index: 999;
 }
 
+.header-fixed {
+  position: fixed;
+  top: 0;
+  background-image: -webkit-gradient(linear,left top,right top,from(#FF8F4E),to(#FF6449));
+  box-shadow: 0 0 3vw rgba( 0, 0, 0, .2);
+}
+
 .logo {
   float: left;
-  margin-top: 12px;
-  width: 30px;
-  height: 30px;
+  margin-top: 3vw;
+  width: 6.6vw;
+  height: 6.6vw;
   background: url('../../../assets/logo-white.png') no-repeat center;
   background-size: 100%;
 }
@@ -259,11 +280,11 @@ nav {
 }
 
 .nav-item {
-  padding: 6px;
-  font-size: 15px;
+  padding: 0 1.5vw;
+  font-size: 3.9vw;
   color: #fff;
   font-weight: 500;
-  line-height: 58px;
+  line-height: 14vw;
 }
 
 .bg {

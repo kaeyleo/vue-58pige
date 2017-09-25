@@ -1,7 +1,7 @@
 <template>
   <div class="page bg-gray">
     <transition name="slide">
-      <router-view></router-view>
+      <router-view class="child-view"></router-view>
     </transition>
     <div class="scroll-view">
       <header class="app-header header-fill">
@@ -261,9 +261,13 @@
 }
 
 .slide-enter-active, .slide-leave-active {
-  transition: .36s ease;
+  transition: .4s ease;
 }
-.slide-enter, .slide-leave-active {
+.slide-enter {
   transform: translate(100%, 0);
 }
+.slide-leave-active {
+  opacity: 0;
+}
+
 </style>

@@ -8,6 +8,7 @@ import resetPassword from '@/components/page/login/resetPassword.vue'
 import detail from '@/components/page/detail/detail.vue'
 import profile from '@/components/page/profile/profile.vue'
 import info from '@/components/page/profile/children/info.vue'
+import edit from '@/components/page/profile/children/edit.vue'
 
 Vue.use(Router)
 
@@ -45,6 +46,10 @@ export default new Router({
         {
           path: 'info',
           component: info
+        },
+        {
+          path: 'edit',
+          component: edit
         }
       ]
     }

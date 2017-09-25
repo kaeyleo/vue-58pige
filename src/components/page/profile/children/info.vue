@@ -7,11 +7,11 @@
       <div class="page-title">个人资料</div>
     </header>
     <section class="profile-card">
-      <div class="profile-item">
+      <router-link to="/profile/edit" tag="div" class="profile-item">
         <span class="profile-item-label">用户名</span>
         <i class="iconfont icon-icon1"></i>
         <span class="profile-item-content">黄鹤</span>
-      </div>
+      </router-link>
       <div class="profile-item">
         <span class="profile-item-label">手机号</span>
         <i class="iconfont icon-icon1"></i>

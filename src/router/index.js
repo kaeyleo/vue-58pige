@@ -5,6 +5,7 @@ import home from '@/components/page/index/home.vue'
 import login from '@/components/page/login/login.vue'
 import register from '@/components/page/login/register.vue'
 import resetPassword from '@/components/page/login/resetPassword.vue'
+import detail from '@/components/page/detail/detail.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
     {
       path: '/forget',
       component: resetPassword
+    },
+    {
+      path: '/detail',
+      component: detail
     }
   ]
 })

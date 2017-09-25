@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <header class="app-header">
-      <div class="back">
+      <div class="back" @click="goback">
         <i class="iconfont icon-fanhui"></i>
       </div>
       <div class="page-title">重置密码</div>
@@ -67,6 +67,9 @@ export default {
     }
   },
   methods: {
+    goback () {
+      this.$router.go(-1)
+    },
     /**
      * @method 清空输入框
      * @param {String} target 需要清空的输入框绑定的参数名

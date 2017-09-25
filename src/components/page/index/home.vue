@@ -14,7 +14,7 @@
     <section>
       <header><h2>推荐商品</h2></header>
       <ul class="info-feeds">
-        <li class="info-item">
+        <router-link to="/detail" class="info-item" tag="li">
           <div class="content">
             <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
             <div class="parameter">
@@ -42,7 +42,7 @@
             </footer>
           </div>
           <div class="mark">企业认证</div>
-        </li>
+        </router-link>
         <li class="info-item">
           <div class="content">
             <div class="title">新款彩色平纹纳帕牛皮革</div>
@@ -125,7 +125,7 @@ nav {
 
 .nav-item {
   padding: 6px;
-  font-size: 14px;
+  font-size: 15px;
   color: #fff;
   font-weight: 500;
   line-height: 58px;
@@ -171,7 +171,7 @@ section {
     border-bottom: 1px solid #ECEEF3;
     h2 {
       margin: 0;
-      font-size: 14px;
+      font-size: 15px;
       color: #333;
       font-weight: normal;
       line-height: 38px;

@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <header class="app-header">
-      <div class="back">
+      <div class="back" @click="goback">
         <i class="iconfont icon-fanhui"></i>
       </div>
       <div class="page-title">注册</div>
@@ -37,7 +37,13 @@
 </template>
 
 <script>
-  
+  export default {
+    methods: {
+      goback () {
+        this.$router.go(-1)
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

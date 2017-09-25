@@ -43,8 +43,6 @@
         <p class="warning">任何要求预付定金、汇款等方式均存在风险，谨防上当受骗。</p>
       </div>
     </section>
-      
-    
 
     <section class="detail-info">
       <header><span>详细信息</span></header>
@@ -92,25 +90,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../../../style/helper';
-
-section {
-  color: #333;
-  background-color: #fff;
-  margin-bottom: 2.6vw;
-  header {
-    padding: 2.6vw $wrap;
-    border-bottom: 1px solid #ECEEF3;
-    span {
-      font-size: 3.8vw;
-      color: #73767E;
-    }
-  }
-}
-
-.content {
-  padding: 3.6vw $wrap;
-}
+@import '../../../style/subpage';
 
 .title {
   h1 {

@@ -6,6 +6,7 @@ import login from '@/components/page/login/login.vue'
 import register from '@/components/page/login/register.vue'
 import resetPassword from '@/components/page/login/resetPassword.vue'
 import detail from '@/components/page/detail/detail.vue'
+import user from '@/components/page/user/user.vue'
 
 Vue.use(Router)
 
@@ -35,6 +36,10 @@ export default new Router({
     {
       path: '/detail',
       component: detail
+    },
+    {
+      path: '/user',
+      component: user
     }
   ]
 })

@@ -1,0 +1,19 @@
+@import 'helper';
+
+section {
+  color: #333;
+  background-color: #fff;
+  margin-bottom: 2.6vw;
+  header {
+    padding: 2.6vw $wrap;
+    border-bottom: 1px solid #ECEEF3;
+    span {
+      font-size: 3.8vw;
+      color: #73767E;
+    }
+  }
+}
+
+.content {
+  padding: 3.6vw $wrap;
+}

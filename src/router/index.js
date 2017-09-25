@@ -6,7 +6,8 @@ import login from '@/components/page/login/login.vue'
 import register from '@/components/page/login/register.vue'
 import resetPassword from '@/components/page/login/resetPassword.vue'
 import detail from '@/components/page/detail/detail.vue'
-import user from '@/components/page/user/user.vue'
+import profile from '@/components/page/profile/profile.vue'
+import info from '@/components/page/profile/children/info.vue'
 
 Vue.use(Router)
 
@@ -14,11 +15,11 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '',
-      redirect: '/home'
+      path: '/home',
+      redirect: '/'
     },
     {
-      path: '/home',
+      path: '/',
       component: home
     },
     {
@@ -38,8 +39,14 @@ export default new Router({
       component: detail
     },
     {
-      path: '/user',
-      component: user
+      path: '/profile',
+      component: profile,
+      children: [
+        {
+          path: 'info',
+          component: info
+        }
+      ]
     }
   ]
 })

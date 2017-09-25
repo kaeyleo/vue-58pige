@@ -3,3 +3,7 @@ $wrap: 4%;
 $primaryColor: #FF764F;
 
 $fontGray: #8F9299;
+
+@mixin page-padding-bottom {
+  margin-bottom: 12vw;
+}

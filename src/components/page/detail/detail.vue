@@ -82,9 +82,16 @@
 
 <script>
   export default {
+    created () {
+      console.log(this.$route.query.infoId)
+    },
     methods: {
       goback () {
-        this.$router.go(-1)
+        if (this.$route.query.routerFrom === 'publish') {
+          this.$router.push('/home')
+        } else {
+          this.$router.go(-1)
+        }
       }
     }
   }

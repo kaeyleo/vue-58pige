@@ -43,11 +43,26 @@
         <div class="add-button">添加参数</div>
       </div>
     </section>
+    <transition name="slide">
+      <div class="success-page" v-if="isSuccess">
+        <i class="iconfont icon-chenggong"></i>
+        <h2>发布成功</h2>
+        <ul>
+          <router-link :to="{path: '/detail', query: {infoId: 123, routerFrom: 'publish'}}" tag="li" class="more">立即查看</router-link>
+          <router-link to="/home" tag="li" class="backhome">返回首页</router-link>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      isSuccess: false
+    }
+  },
   methods: {
     goback () {
       this.$router.go(-1)
@@ -120,7 +135,6 @@ textarea, input {
       color: #333;
     }
     .value {
-      
       width: 50%;
     }
   }
@@ -138,5 +152,53 @@ textarea, input {
   &:active {
     background-color: #F6F7F9;
   }
+}
+
+.success-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #fff;
+  .iconfont {
+    display: block;
+    margin-top: 30%;
+    font-size: 26vw;
+    color: #5CD14F;
+  }
+  h2 {
+    margin-top: 2vw;
+    font-size: 6vw;
+    font-weight: normal;
+    color: #333;
+  }
+  ul {
+    margin-top: 30vw;
+    li {
+      margin: 0 auto;
+      padding: 2.4vw 0;
+      width: 80%;
+      border-radius: .8vw;
+    }
+    .more {
+      font-size: 4.6vw;
+      color: #fff;
+      background-color: #FF7E5A;
+    }
+    .backhome {
+      margin-top: 2vw;
+      font-size: 4vw;
+      color: #798490;
+    }
+  }
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: .4s ease-in-out;
+}
+.slide-enter, .slide-leave-active {
+  transform: translate(100%, 0);
 }
 </style>

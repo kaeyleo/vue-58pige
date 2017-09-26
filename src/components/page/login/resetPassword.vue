@@ -30,10 +30,15 @@
       </div>
     </div>  
 
+    <transition name="slide">
+      <success :successData="successData" v-if="isSuccess"></success>
+    </transition>
   </div>
 </template>
 
 <script>
+import success from '@/components/common/success'
+
 export default {
   data () {
     return {
@@ -49,7 +54,18 @@ export default {
       nextText: '下一步',
       isNext: false,
       isSubmit: false,
-      submitText: '确认'
+      submitText: '确认',
+      successData: {
+        title: '新密码设置成功',
+        button: {
+          text: '立即登录',
+          path: '/login',
+          query: {
+            backhome: true
+          }
+        }
+      },
+      isSuccess: false
     }
   },
   watch: {
@@ -66,6 +82,9 @@ export default {
       this.check('password', 'pwdIsMath')
     }
   },
+  components: {
+    success
+  },
   methods: {
     goback () {
       this.$router.go(-1)
@@ -75,7 +94,7 @@ export default {
      * @param {String} target 需要清空的输入框绑定的参数名
      */
     clear (target) {
-      this[target] = null
+      this[target] = ''
     },
     /**
      * @method 发送验证码短信
@@ -144,6 +163,9 @@ export default {
       }
       this.isSubmit = true
       this.submitText = '正在注册...'
+      setTimeout(() => {
+        this.isSuccess = true
+      }, 500)
     }
   }
 }
@@ -156,5 +178,12 @@ export default {
   margin: 0;
   width: 100%;
   float: left;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: .4s ease-in-out;
+}
+.slide-enter, .slide-leave-active {
+  transform: translate(100%, 0);
 }
 </style>

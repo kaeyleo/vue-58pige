@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <header class="app-header">
-      <div class="back">
+      <div class="back" @click="goback">
         <i class="iconfont icon-fanhui"></i>
       </div>
       <div class="link">
@@ -27,7 +27,15 @@
 </template>
 
 <script>
-  
+export default {
+  methods: {
+    goback () {
+      this.$route.query.backhome
+        ? this.$router.push('/home')
+        : this.$router.go(-1)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -81,20 +81,18 @@
 </template>
 
 <script>
-  export default {
-    created () {
-      console.log(this.$route.query.infoId)
-    },
-    methods: {
-      goback () {
-        if (this.$route.query.routerFrom === 'publish') {
-          this.$router.push('/home')
-        } else {
-          this.$router.go(-1)
-        }
-      }
+export default {
+  created () {
+    console.log(this.$route.query.infoId)
+  },
+  methods: {
+    goback () {
+      this.$route.query.backhome
+        ? this.$router.push('/home')
+        : this.$router.go(-1)
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

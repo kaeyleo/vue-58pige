@@ -8,7 +8,7 @@ import resetPassword from '@/components/page/login/resetPassword.vue'
 import detail from '@/components/page/detail/detail.vue'
 import profile from '@/components/page/profile/profile.vue'
 import info from '@/components/page/profile/children/info.vue'
-import edit from '@/components/page/profile/children/edit.vue'
+import shopEdit from '@/components/page/profile/children/shopEdit.vue'
 
 Vue.use(Router)
 
@@ -48,8 +48,8 @@ export default new Router({
           component: info
         },
         {
-          path: 'edit',
-          component: edit
+          path: 'shopEdit',
+          component: shopEdit
         }
       ]
     }

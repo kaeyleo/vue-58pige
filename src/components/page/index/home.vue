@@ -230,6 +230,9 @@ export default {
       isFixed: false
     }
   },
+  created () {
+    this.initData()
+  },
   mounted () {
     this.$nextTick(function () {
       window.addEventListener('scroll', this.fixedheader)
@@ -239,6 +242,12 @@ export default {
     fixedheader () {
       let scroll = document.body.scrollTop
       scroll >= 140 ? this.isFixed = true : this.isFixed = false
+    },
+    initData () {
+      this.$http.get('http://jsonplaceholder.typicode.com/comments')
+        .then(res => {
+          console.log(res)
+        })
     }
   }
 }

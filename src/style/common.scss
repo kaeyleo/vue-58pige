@@ -82,6 +82,8 @@ input {
   .link {
     float: right;
     a {
+      display: inline-block;
+      margin-top: .2vw;
       font-size: 3.8vw;
       color: #555;
     }

@@ -18,10 +18,10 @@
           </div>
           <router-link to="/profile/info" tag="div" class="edit-button">修改资料</router-link>
         </div>
-        <div class="content shop">
+        <router-link to="/profile/shopEdit" tag="div" class="content shop">
           <span>我的店铺</span>
           <i class="iconfont icon-icon1"></i>
-        </div>
+        </router-link>
       </section>
       <div class="tab-container">
         <header class="tab">
@@ -261,13 +261,9 @@
 }
 
 .slide-enter-active, .slide-leave-active {
-  transition: .4s ease;
+  transition: .36s ease;
 }
-.slide-enter {
+.slide-enter, .slide-leave-active {
   transform: translate(100%, 0);
 }
-.slide-leave-active {
-  opacity: 0;
-}
-
 </style>

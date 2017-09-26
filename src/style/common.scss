@@ -71,6 +71,9 @@ input {
       font-size: 5.8vw;
       line-height: 5vw;
     }
+    span {
+      font-size: 3.8vw;
+    }
   }
   .page-title {
     position: absolute;
@@ -83,7 +86,7 @@ input {
     float: right;
     a {
       display: inline-block;
-      margin-top: .2vw;
+      margin-top: 0vw;
       font-size: 3.8vw;
       color: #555;
     }

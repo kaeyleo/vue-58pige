@@ -3,7 +3,7 @@
     <header class="home-header" :class="{'header-fixed': isFixed}">
       <div class="logo"></div>
       <nav>
-        <a href="" class="nav-item">发布</a><router-link to="/profile" class="nav-item">我的</router-link>
+        <router-link to="/publish" class="nav-item">发布</router-link><router-link to="/profile" class="nav-item">我的</router-link>
       </nav>
     </header>
     <div class="banner">

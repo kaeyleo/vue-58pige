@@ -4,15 +4,15 @@
 
 export default {
   // 手机号验证
-  isPhoneNumber (value) {
+  phoneNumber (value) {
     return /^1[34578]\d{9}$/.test(value)
   },
   // 密码验证
-  isPassword (value) {
+  password (value) {
     return /^[a-zA-Z0-9]{6,12}$/.test(value)
   },
   // 短信验证码验证
-  isCode (value) {
+  code (value) {
     return /^\d{6}$/.test(value)
   }
 }

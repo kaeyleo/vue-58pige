@@ -20,9 +20,9 @@
   position: fixed;
   top: 40%;
   left: 50%;
-  margin-left: -15vw;
+  margin-left: -20vw;
   padding: 2vw;
-  width: 30vw;
+  width: 40vw;
   font-size: 4vw;
   color: #fff;
   text-align: center;

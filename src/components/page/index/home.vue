@@ -243,10 +243,14 @@ export default {
       let scroll = document.body.scrollTop
       scroll >= 140 ? this.isFixed = true : this.isFixed = false
     },
+    // TODO: 获取列表数据、获取banner数据
     initData () {
-      this.$http.get('http://jsonplaceholder.typicode.com/comments')
+      this.$http.get('http://localhost/58pige/server/api/getInfoList/')
         .then(res => {
           console.log(res)
+        })
+        .catch(error => {
+          console.log(error)
         })
     }
   }

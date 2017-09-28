@@ -6,17 +6,17 @@
       </div>
       <div class="page-title">个人资料</div>
       <div class="link">
-        <a>完成</a>
+        <div @click="submit">完成</div>
       </div>
     </header>
     <section class="edit-card">
       <div class="edit-item">
         <span class="edit-label">用户名</span>
-        <input class="edit-input" type="text" placeholder="请输入" value="黄鹤">
+        <input class="edit-input" type="text" placeholder="请输入" v-model="name">
       </div>
       <div class="edit-item">
         <span class="edit-label">手机号</span>
-        <input class="edit-input" type="text" readonly value="15800000123">
+        <input class="edit-input" type="text" readonly v-model="phone">
       </div>
     </section>
   </div>
@@ -24,9 +24,36 @@
 
 <script>
 export default {
+  data () {
+    return {
+      id: null,
+      name: null,
+      phone: null
+    }
+  },
+  created () {
+    // 初始化
+    console.log()
+    const userData = this.$route.params
+    this.id = userData.uid
+    this.name = userData.name
+    this.phone = userData.phone
+  },
   methods: {
     goback () {
       this.$router.go(-1)
+    },
+    submit () {
+      if (this.name.length < 2) {
+        this.$toast('用户名至少2位')
+        return
+      }
+      if (this.name.length > 8) {
+        this.$toast('用户名最多8位')
+        return
+      }
+      // 提交
+      console.log('成功')
     }
   }
 }

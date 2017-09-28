@@ -2,8 +2,11 @@
   <div class="bg-gray">
     <header class="home-header" :class="{'header-fixed': isFixed}">
       <div class="logo"></div>
-      <nav>
+      <nav v-show="isLogin">
         <router-link to="/publish" class="nav-item">发布</router-link><router-link to="/profile" class="nav-item">我的</router-link>
+      </nav>
+      <nav v-show="!isLogin">
+        <router-link to="/login" class="nav-item">登录</router-link><router-link to="/reg" class="nav-item">注册</router-link>
       </nav>
     </header>
     <div class="banner">
@@ -217,21 +220,31 @@
           </div>
           <!-- <div class="mark">企业认证</div> -->
         </li>
-        <li class="load-more">加载更多</li>
+        <li class="load-more" @click="loadMore">加载更多</li>
       </ul>
     </section>
   </div>
 </template>
 
 <script>
+import store from '@/utils/store.js'
+
 export default {
   data () {
     return {
-      isFixed: false
+      isFixed: false,
+      isLogin: false,
+      list: []
     }
   },
   created () {
-    this.initData()
+    // 加载数据
+    // this.initData()
+    // 判断是否登录
+    if (store.get('user') !== null) {
+      const userData = store.get('user', true)
+      userData.login ? this.isLogin = true : ''
+    }
   },
   mounted () {
     this.$nextTick(function () {
@@ -252,6 +265,13 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    loadMore () {
+      if (this.isLogin) {
+        // TODO: 加载下一页..
+      } else {
+        this.$toast('登录即可查看更多')
+      }
     }
   }
 }

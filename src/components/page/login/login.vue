@@ -87,9 +87,14 @@ export default {
               : store.update('user', {login})
             this.$toast('登录成功')
             this.$router.push('/home')
+            console.log(res.data)
           } else if (res.data.code === 401) {
             this.$toast(res.data.msg)
             // 登录会话过期，跳转到登录页面...
+            store.update('user', {
+              login: false
+            })
+            this.$router.push('/login')
           } else {
             this.$toast(res.data.msg)
           }

@@ -49,6 +49,7 @@ export default new Router({
       component: profile,
       children: [
         {
+          name: 'info',
           path: 'info',
           component: info
         },

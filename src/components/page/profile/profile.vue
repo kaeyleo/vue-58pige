@@ -13,10 +13,10 @@
       <section>
         <div class="content user">
           <div class="user-info">
-            <span class="name">黄鹤</span>
-            <span class="phone">15800000123</span>
+            <span class="name">{{ user.name }}</span>
+            <span class="phone">{{ user.phone }}</span>
           </div>
-          <router-link to="/profile/info" tag="div" class="edit-button">修改资料</router-link>
+          <router-link :to="{name: 'info', params: {uid: user.id, name: user.name, phone: user.phone}}" tag="div" class="edit-button">修改资料</router-link>
         </div>
         <router-link to="/profile/shopEdit" tag="div" class="content shop">
           <span>我的店铺</span>
@@ -182,13 +182,37 @@
 </template>
 
 <script>
-  export default {
-    methods: {
-      goback () {
-        this.$router.go(-1)
+import store from '@/utils/store.js'
+
+export default {
+  data () {
+    return {
+      user: {
+        id: null,
+        name: null,
+        phone: null
       }
     }
+  },
+  created () {
+    if (store.get('user') === null || !store.get('user', true).login) {
+      this.$toast('请登录')
+      setTimeout(() => {
+        this.$router.push({path: '/login', query: { backhome: true }})
+      }, 1500)
+    } else {
+      const userData = store.get('user', true)
+      this.user.id = userData.uid
+      this.user.name = userData.name
+      this.user.phone = userData.phone
+    }
+  },
+  methods: {
+    goback () {
+      this.$router.go(-1)
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>

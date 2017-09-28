@@ -3,44 +3,37 @@
     <header class="app-header header-fill">
       <div class="back" @click="goback"><span>取消</span></div>
       <div class="page-title">发布</div>
-      <div class="link">
-        <a>提交</a>
+      <div class="link" @click="submit">
+        <div>提交</div>
       </div>
     </header>
     <section class="edit-card">
       <div class="edit-item">
         <span class="edit-label">标题</span>
-        <input class="edit-input" type="text" placeholder="请输入">
+        <input class="edit-input" type="text" placeholder="请输入" v-model="title">
       </div>
       <div class="edit-item">
         <span class="edit-label">价格</span>
-        <input class="edit-input" type="text" placeholder="请输入">
+        <input class="edit-input" type="number" placeholder="请输入" v-model="price">
       </div>
       <div class="edit-item">
-        <textarea class="edit-textarea" rows="3" placeholder="详细信息（选填）"></textarea>
+        <textarea class="edit-textarea" rows="3" placeholder="详细信息（选填）" v-model="intro"></textarea>
       </div>
     </section>
     <section>
       <div class="content">
         <ul class="parameter">
-          <li>
-            <input class="name" type="text" readonly value="品种">
-            <input class="value" type="text" placeholder="例：牛皮、羊皮">
+          <li v-for="item in parameter">
+            <input class="name" type="text" readonly :value="item.name">
+            <input class="value" type="text" :placeholder="item.placeholder" v-model="item.value">
           </li>
-          <li>
-            <input class="name" type="text" readonly value="皮层">
-            <input class="value" type="text" placeholder="例：头层">
-          </li>
-          <li>
-            <input class="name" type="text" readonly value="厚度">
-            <input class="value" type="text" placeholder="例：1.3mm">
-          </li>
-          <li>
-            <input class="name" type="text" placeholder="请填写参数名">
-            <input class="value" type="text" placeholder="请填写参数信息">
+          <li v-for="(item, index) in customParam" class="custom">
+            <input class="name" type="text" placeholder="请填写参数名" v-model="item.name">
+            <input class="value" type="text" placeholder="请填写参数信息" v-model="item.value">
+            <i class="iconfont icon-guanbi" @click="remove(index)"></i>
           </li>
         </ul>
-        <div class="add-button" @click="isSuccess = true">添加参数</div>
+        <div class="add-button" v-show="customParam.length < 3" @click="addParam">添加参数</div>
       </div>
     </section>
     <transition name="slide">
@@ -50,18 +43,28 @@
 </template>
 
 <script>
+import store from '@/utils/store.js'
 import success from '@/components/common/success'
 
 export default {
   data () {
     return {
+      title: null,
+      price: null,
+      intro: null,
+      parameter: [
+        {name: '品种', value: null, placeholder: '例：牛皮、羊皮'},
+        {name: '皮层', value: null, placeholder: '例：头层'},
+        {name: '厚度', value: null, placeholder: '例：1.3mm'}
+      ],
+      customParam: [],
       successData: {
         title: '发布成功',
         button: {
           text: '立即查看',
           path: '/detail',
           query: {
-            infoId: 123,
+            infoId: null,
             backhome: true
           }
         }
@@ -75,6 +78,84 @@ export default {
   methods: {
     goback () {
       this.$router.go(-1)
+    },
+    addParam () {
+      this.customParam.push({name: null, value: null})
+    },
+    remove (index) {
+      this.customParam.splice(index, 1)
+    },
+    check () {
+      if (this.title === null || this.title.length < 4) {
+        this.$toast('标题至少4个字')
+        return
+      }
+      if (!/^\+?(?!0+(\d|(\.00?)?$))\d+(\.\d\d?)?$/.test(this.price)) {
+        this.$toast('请填写正确的价格')
+        return
+      }
+      // 固定参数验证
+      for (let i = 0; i < this.parameter.length; i++) {
+        const row = this.parameter[i]
+        if (row.value === null) {
+          this.$toast('参数信息不为空')
+          return
+        }
+      }
+      // 自定义参数验证
+      for (let i = 0; i < this.customParam.length; i++) {
+        const row = this.customParam[i]
+        if (row.name === null) {
+          this.$toast('自定义参数名缺失')
+          return
+        }
+        if (row.value === null) {
+          this.$toast('自定义参数信息不为空')
+          return
+        }
+      }
+    },
+    mergeParam () {
+      // 拷贝参数对象，删除placeholder属性
+      const param = JSON.parse(JSON.stringify(this.parameter))
+      for (let i = 0; i < param.length; i++) {
+        delete param[i].placeholder
+      }
+      // 合并参数对象，打包成对象字符串
+      const data = param.concat(this.customParam)
+      console.log(data)
+      return JSON.stringify(data)
+    },
+    submit () {
+      // 表单验证
+      this.check()
+      // 整合请求数据
+      const params = new URLSearchParams()
+      params.append('uid', store.get('user', true).uid)
+      params.append('title', this.title)
+      params.append('price', this.price)
+      params.append('intro', this.intro)
+      params.append('param', this.mergeParam())
+      // 发送请求
+      this.$http.post('http://localhost/58pige/server/api/publish/', params)
+        .then(res => {
+          if (res.data.code === 200) {
+            this.successData.button.query.infoId = res.data.data.info_id
+            this.isSuccess = true
+          } else if (res.data.code === 401) {
+            this.$toast(res.data.msg)
+            // 登录会话过期，跳转到登录页面...
+            store.update('user', {
+              login: false
+            })
+            this.$router.push('/login')
+          } else {
+            this.$toast(res.data.msg)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 }
@@ -140,11 +221,22 @@ textarea, input {
     }
     .name {
       margin-top: .2vw;
-      width: 50%;
+      width: 40%;
       color: #333;
     }
     .value {
-      width: 50%;
+      width: 60%;
+    }
+    
+  }
+  .custom {
+    .value {
+      width: 52%;
+    }
+    .icon-guanbi {
+      width: 8%;
+      font-size: 4.6vw;
+      color: #ccc;
     }
   }
 }

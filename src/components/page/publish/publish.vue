@@ -49,13 +49,13 @@ import success from '@/components/common/success'
 export default {
   data () {
     return {
-      title: null,
-      price: null,
-      intro: null,
+      title: '',
+      price: '',
+      intro: '',
       parameter: [
-        {name: '品种', value: null, placeholder: '例：牛皮、羊皮'},
-        {name: '皮层', value: null, placeholder: '例：头层'},
-        {name: '厚度', value: null, placeholder: '例：1.3mm'}
+        {name: '品种', value: '', placeholder: '例：牛皮、羊皮'},
+        {name: '皮层', value: '', placeholder: '例：头层'},
+        {name: '厚度', value: '', placeholder: '例：1.3mm'}
       ],
       customParam: [],
       successData: {

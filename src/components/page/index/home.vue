@@ -17,7 +17,7 @@
     <section>
       <header><h2>推荐商品</h2></header>
       <ul class="info-feeds">
-        <router-link to="/detail" class="info-item" tag="li">
+        <router-link :to="{path: '/detail', query: {infoId: '31240835'}}" class="info-item" tag="li">
           <div class="icontent">
             <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
             <div class="parameter">

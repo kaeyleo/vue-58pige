@@ -64,7 +64,7 @@ export default {
           text: '立即查看',
           path: '/detail',
           query: {
-            infoId: null,
+            infoId: '',
             backhome: true
           }
         }
@@ -80,40 +80,42 @@ export default {
       this.$router.go(-1)
     },
     addParam () {
-      this.customParam.push({name: null, value: null})
+      this.customParam.push({name: '', value: ''})
     },
     remove (index) {
       this.customParam.splice(index, 1)
     },
-    check () {
-      if (this.title === null || this.title.length < 4) {
-        this.$toast('标题至少4个字')
-        return
-      }
-      if (!/^\+?(?!0+(\d|(\.00?)?$))\d+(\.\d\d?)?$/.test(this.price)) {
-        this.$toast('请填写正确的价格')
-        return
-      }
+    check (handler) {
+      let flag = true
       // 固定参数验证
       for (let i = 0; i < this.parameter.length; i++) {
         const row = this.parameter[i]
-        if (row.value === null) {
+        if (row.value === '') {
           this.$toast('参数信息不为空')
-          return
+          flag = false
         }
       }
       // 自定义参数验证
       for (let i = 0; i < this.customParam.length; i++) {
         const row = this.customParam[i]
-        if (row.name === null) {
+        if (row.name === '') {
           this.$toast('自定义参数名缺失')
-          return
+          flag = false
         }
-        if (row.value === null) {
+        if (row.value === '') {
           this.$toast('自定义参数信息不为空')
-          return
+          flag = false
         }
       }
+      if (!/^\+?(?!0+(\d|(\.00?)?$))\d+(\.\d\d?)?$/.test(this.price)) {
+        this.$toast('请填写正确的价格')
+        flag = false
+      }
+      if (this.title === '' || this.title.length < 4) {
+        this.$toast('标题至少4个字')
+        flag = false
+      }
+      return flag
     },
     mergeParam () {
       // 拷贝参数对象，删除placeholder属性
@@ -128,34 +130,35 @@ export default {
     },
     submit () {
       // 表单验证
-      this.check()
-      // 整合请求数据
-      const params = new URLSearchParams()
-      params.append('uid', store.get('user', true).uid)
-      params.append('title', this.title)
-      params.append('price', this.price)
-      params.append('intro', this.intro)
-      params.append('param', this.mergeParam())
-      // 发送请求
-      this.$http.post('http://localhost/58pige/server/api/publish/', params)
-        .then(res => {
-          if (res.data.code === 200) {
-            this.successData.button.query.infoId = res.data.data.info_id
-            this.isSuccess = true
-          } else if (res.data.code === 401) {
-            this.$toast(res.data.msg)
-            // 登录会话过期，跳转到登录页面...
-            store.update('user', {
-              login: false
-            })
-            this.$router.push('/login')
-          } else {
-            this.$toast(res.data.msg)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      if (this.check()) {
+        // 整合请求数据
+        const params = new URLSearchParams()
+        params.append('uid', store.get('user', true).uid)
+        params.append('title', this.title)
+        params.append('price', this.price)
+        params.append('intro', this.intro)
+        params.append('param', this.mergeParam())
+        // 发送请求
+        this.$http.post('http://localhost/58pige/server/api/publish/', params)
+          .then(res => {
+            if (res.data.code === 200) {
+              this.successData.button.query.infoId = res.data.data.info_id
+              this.isSuccess = true
+            } else if (res.data.code === 401) {
+              this.$toast(res.data.msg)
+              // 登录会话过期，跳转到登录页面...
+              store.update('user', {
+                login: false
+              })
+              this.$router.push('/login')
+            } else {
+              this.$toast(res.data.msg)
+            }
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
     }
   }
 }

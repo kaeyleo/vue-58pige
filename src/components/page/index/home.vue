@@ -17,210 +17,36 @@
     <section>
       <header><h2>推荐商品</h2></header>
       <ul class="info-feeds">
-        <router-link :to="{path: '/detail', query: {infoId: '31240835'}}" class="info-item" tag="li">
+        <router-link class="info-item" :to="{path: '/detail', query: {infoId: item.info_id}}" tag="li" v-for="item in list" key="item">
           <div class="icontent">
-            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
+            <div class="title">{{ item.title }}</div>
             <div class="parameter">
               <div class="param-list left">
                 <div class="param-item">
-                  <span class="value">黄牛皮</span>
+                  <span class="value">{{ item.parameters[0].value }}</span>
                   <span class="param">品种</span>
                 </div>
                 <div class="param-item">
-                  <span class="value">A级</span>
+                  <span class="value">{{ item.parameters[1].value }}</span>
                   <span class="param">皮胚</span>
                 </div>
                 <div class="param-item">
-                  <span class="value">0.7mm</span>
+                  <span class="value">{{ item.parameters[2].value }}</span>
                   <span class="param">厚度</span>
                 </div>
               </div>
               <div class="price right">
-                <span>¥14.00</span>
+                <span>¥{{ item.price }}</span>
               </div>
             </div>
             <footer class="clear">
-              <span class="left">成都盛泓超纤皮革经营部</span>
-              <span class="right">成都武侯</span>
+              <span class="left">{{ item.shop.name }}</span>
+              <span class="right">{{ item.shop.address }}</span>
             </footer>
           </div>
           <div class="mark">企业认证</div>
         </router-link>
-        <router-link to="/detail" class="info-item" tag="li">
-          <div class="icontent">
-            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-            <div class="parameter">
-              <div class="param-list left">
-                <div class="param-item">
-                  <span class="value">黄牛皮</span>
-                  <span class="param">品种</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">A级</span>
-                  <span class="param">皮胚</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">0.7mm</span>
-                  <span class="param">厚度</span>
-                </div>
-              </div>
-              <div class="price right">
-                <span>¥14.00</span>
-              </div>
-            </div>
-            <footer class="clear">
-              <span class="left">成都盛泓超纤皮革经营部</span>
-              <span class="right">成都武侯</span>
-            </footer>
-          </div>
-          <div class="mark">企业认证</div>
-        </router-link>
-        <router-link to="/detail" class="info-item" tag="li">
-          <div class="icontent">
-            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-            <div class="parameter">
-              <div class="param-list left">
-                <div class="param-item">
-                  <span class="value">黄牛皮</span>
-                  <span class="param">品种</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">A级</span>
-                  <span class="param">皮胚</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">0.7mm</span>
-                  <span class="param">厚度</span>
-                </div>
-              </div>
-              <div class="price right">
-                <span>¥14.00</span>
-              </div>
-            </div>
-            <footer class="clear">
-              <span class="left">成都盛泓超纤皮革经营部</span>
-              <span class="right">成都武侯</span>
-            </footer>
-          </div>
-          <div class="mark">企业认证</div>
-        </router-link>
-        <router-link to="/detail" class="info-item" tag="li">
-          <div class="icontent">
-            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-            <div class="parameter">
-              <div class="param-list left">
-                <div class="param-item">
-                  <span class="value">黄牛皮</span>
-                  <span class="param">品种</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">A级</span>
-                  <span class="param">皮胚</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">0.7mm</span>
-                  <span class="param">厚度</span>
-                </div>
-              </div>
-              <div class="price right">
-                <span>¥14.00</span>
-              </div>
-            </div>
-            <footer class="clear">
-              <span class="left">成都盛泓超纤皮革经营部</span>
-              <span class="right">成都武侯</span>
-            </footer>
-          </div>
-          <div class="mark">企业认证</div>
-        </router-link>
-        <router-link to="/detail" class="info-item" tag="li">
-          <div class="icontent">
-            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-            <div class="parameter">
-              <div class="param-list left">
-                <div class="param-item">
-                  <span class="value">黄牛皮</span>
-                  <span class="param">品种</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">A级</span>
-                  <span class="param">皮胚</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">0.7mm</span>
-                  <span class="param">厚度</span>
-                </div>
-              </div>
-              <div class="price right">
-                <span>¥14.00</span>
-              </div>
-            </div>
-            <footer class="clear">
-              <span class="left">成都盛泓超纤皮革经营部</span>
-              <span class="right">成都武侯</span>
-            </footer>
-          </div>
-          <div class="mark">企业认证</div>
-        </router-link>
-        <router-link to="/detail" class="info-item" tag="li">
-          <div class="icontent">
-            <div class="title">水刺底仿猪皮革 无纺布底PU仿猪里皮</div>
-            <div class="parameter">
-              <div class="param-list left">
-                <div class="param-item">
-                  <span class="value">黄牛皮</span>
-                  <span class="param">品种</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">A级</span>
-                  <span class="param">皮胚</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">0.7mm</span>
-                  <span class="param">厚度</span>
-                </div>
-              </div>
-              <div class="price right">
-                <span>¥14.00</span>
-              </div>
-            </div>
-            <footer class="clear">
-              <span class="left">成都盛泓超纤皮革经营部</span>
-              <span class="right">成都武侯</span>
-            </footer>
-          </div>
-          <div class="mark">企业认证</div>
-        </router-link>
-        <li class="info-item">
-          <div class="icontent">
-            <div class="title">新款彩色平纹纳帕牛皮革</div>
-            <div class="parameter">
-              <div class="param-list left">
-                <div class="param-item">
-                  <span class="value">黄牛皮</span>
-                  <span class="param">品种</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">A级</span>
-                  <span class="param">皮胚</span>
-                </div>
-                <div class="param-item">
-                  <span class="value">1.2mm</span>
-                  <span class="param">厚度</span>
-                </div>
-              </div>
-              <div class="price right">
-                <span>¥19.50</span>
-              </div>
-            </div>
-            <footer class="clear">
-              <span class="left">鼎茂皮革</span>
-              <span class="right">广东 广州</span>
-            </footer>
-          </div>
-          <!-- <div class="mark">企业认证</div> -->
-        </li>
-        <li class="load-more" @click="loadMore">加载更多</li>
+        <li class="load-more" @click="haveMore && loadMore()">{{ loadText }}</li>
       </ul>
     </section>
   </div>
@@ -234,12 +60,16 @@ export default {
     return {
       isFixed: false,
       isLogin: false,
-      list: []
+      list: [],
+      page: 1,
+      pageSize: 3,
+      haveMore: true,
+      loadText: '加载更多'
     }
   },
   created () {
     // 加载数据
-    // this.initData()
+    this.initData()
     // 判断是否登录
     if (store.get('user') !== null) {
       const userData = store.get('user', true)
@@ -256,10 +86,31 @@ export default {
       let scroll = document.body.scrollTop
       scroll >= 140 ? this.isFixed = true : this.isFixed = false
     },
-    // TODO: 获取列表数据、获取banner数据
+    // TODO: 获取banner数据
     initData () {
-      this.$http.get('http://localhost/58pige/server/api/getInfoList/')
+      this.getList()
+    },
+    getList () {
+      const params = new URLSearchParams()
+      params.append('page', this.page)
+      params.append('pageSize', this.pageSize)
+      this.$http.post('http://localhost/58pige/server/api/getInfoList/', params)
         .then(res => {
+          if (res.data.code === 200) {
+            const list = res.data.data.list
+            if (list.length !== 0) {
+              for (let i = 0; i < list.length; i++) {
+                const item = list[i]
+                item.shop = JSON.parse(item.shop)
+                item.parameters = JSON.parse(item.parameters)
+                this.list.push(item)
+              }
+            } else {
+              this.haveMore = false
+              this.loadText = '没有更多了'
+              this.$toast('没有更多了')
+            }
+          }
           console.log(res)
         })
         .catch(error => {
@@ -267,11 +118,13 @@ export default {
         })
     },
     loadMore () {
-      if (this.isLogin) {
-        // TODO: 加载下一页..
-      } else {
+      if (!this.isLogin) {
         this.$toast('登录即可查看更多')
+        return
       }
+      // 加载下一页
+      ++this.page
+      this.getList()
     }
   }
 }

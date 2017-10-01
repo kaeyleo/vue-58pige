@@ -68,11 +68,11 @@ export default {
       isCreated: false,
       createShop: false,
       shop: {
-        id: null,
-        name: null,
-        address: null,
-        contact: null,
-        phone: null
+        id: '',
+        name: '',
+        address: '',
+        contact: '',
+        phone: ''
       }
     }
   },
@@ -114,11 +114,11 @@ export default {
             this.$toast('删除成功')
             this.isCreated = false
             // 设置数据
-            this.shop.id = null
-            this.shop.name = null
-            this.shop.address = null
-            this.shop.contact = null
-            this.shop.phone = null
+            this.shop.id = ''
+            this.shop.name = ''
+            this.shop.address = ''
+            this.shop.contact = ''
+            this.shop.phone = ''
           } else {
             this.$toast(res.data.msg)
           }
@@ -128,47 +128,50 @@ export default {
         })
     },
     check () {
-      if (this.shop.name === null) {
+      let flag = true
+      if (this.shop.name === '') {
         this.$toast('店铺名不为空')
-        return
+        flag = false
       }
-      if (this.shop.address === null) {
+      if (this.shop.address === '') {
         this.$toast('地址不为空')
-        return
+        flag = false
       }
-      if (this.shop.contact === null) {
+      if (this.shop.contact === '') {
         this.$toast('联系人必填')
-        return
+        flag = false
       }
       if (!validate.phoneNumber(this.shop.phone)) {
         this.$toast('请填写正确的手机号')
-        return
+        flag = false
       }
+      return flag
     },
     submit () {
-      this.check()
-      // 提交创建店铺
-      const params = new URLSearchParams()
-      params.append('uid', store.get('user', true).uid)
-      params.append('name', this.shop.name)
-      params.append('address', this.shop.address)
-      params.append('contact', this.shop.contact)
-      params.append('phone', this.shop.phone)
-      this.$http.post('http://localhost/58pige/server/api/createShop/', params)
-        .then(res => {
-          console.log(res)
-          if (res.data.code === 200) {
-            this.$toast('店铺创建成功')
-            // 创建成功，切换模板状态
-            this.isCreated = true
-            this.createShop = false
-          } else {
-            this.$toast(res.data.msg)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      if (this.check()) {
+        // 提交创建店铺
+        const params = new URLSearchParams()
+        params.append('uid', store.get('user', true).uid)
+        params.append('name', this.shop.name)
+        params.append('address', this.shop.address)
+        params.append('contact', this.shop.contact)
+        params.append('phone', this.shop.phone)
+        this.$http.post('http://localhost/58pige/server/api/createShop/', params)
+          .then(res => {
+            console.log(res)
+            if (res.data.code === 200) {
+              this.$toast('店铺创建成功')
+              // 创建成功，切换模板状态
+              this.isCreated = true
+              this.createShop = false
+            } else {
+              this.$toast(res.data.msg)
+            }
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
     }
   }
 }

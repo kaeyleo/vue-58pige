@@ -23,17 +23,18 @@
 </template>
 
 <script>
+import store from '@/utils/store.js'
+
 export default {
   data () {
     return {
-      id: null,
-      name: null,
-      phone: null
+      id: '',
+      name: '',
+      phone: ''
     }
   },
   created () {
     // 初始化
-    console.log()
     const userData = this.$route.params
     this.id = userData.uid
     this.name = userData.name
@@ -53,7 +54,23 @@ export default {
         return
       }
       // 提交
-      console.log('成功')
+      const params = new URLSearchParams()
+      params.append('id', this.id)
+      params.append('name', this.name)
+      this.$http.post('http://localhost/58pige/server/api/updateUser/', params)
+        .then(res => {
+          console.log(res.data)
+          if (res.data.code === 200) {
+            // 写入本地
+            store.update('user', {name: this.name})
+            this.$toast('修改成功')
+          } else if (res.data.code === 400) {
+            this.$toast(res.data.msg)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 }

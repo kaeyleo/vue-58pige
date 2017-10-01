@@ -188,9 +188,9 @@ export default {
   data () {
     return {
       user: {
-        id: null,
-        name: null,
-        phone: null
+        id: '',
+        name: '',
+        phone: ''
       }
     }
   },
